@@ -43,21 +43,44 @@ def showSummary():
 
 @app.route('/book/<competition>/<club>')
 def book(competition, club):
-    foundClub = [c for c in clubs if c['name'] == club][0]
-    foundCompetition = [c for c in competitions if c['name'] == competition][0]
-    if foundClub and foundCompetition:
-        return render_template('booking.html', club=foundClub, competition=foundCompetition)
-    else:
-        flash("Something went wrong-please try again")
-        return render_template('welcome.html', club=club, competitions=competitions)
+    # Recherche sécurisée du club
+    matching_clubs = [c for c in clubs if c['name'] == club]
+    # Recherche sécurisée de la compétition
+    matching_competitions = [c for c in competitions if c['name'] == competition]
+    
+    # Si l'un des deux n'existe pas, on lève une sécurité
+    if not matching_clubs or not matching_competitions:
+        flash("Ressource introuvable. Veuillez réessayer.")
+        return redirect(url_for('index'))
+        
+    foundClub = matching_clubs[0]
+    foundCompetition = matching_competitions[0]
+    
+    return render_template('booking.html', club=foundClub, competition=foundCompetition)
 
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
-    competition = [c for c in competitions if c['name'] == request.form['competition']][0]
-    club = [c for c in clubs if c['name'] == request.form['club']][0]
+    # Recherche sécurisée de la compétition et du club depuis le formulaire
+    matching_competitions = [c for c in competitions if c['name'] == request.form['competition']]
+    matching_clubs = [c for c in clubs if c['name'] == request.form['club']]
+    
+    if not matching_competitions or not matching_clubs:
+        flash("Une erreur est survenue lors de la sélection des données.")
+        return redirect(url_for('index'))
+        
+    competition = matching_competitions[0]
+    club = matching_clubs[0]
+    
+    # Sécurisation minimale en cas d'absence du champ 'places' dans la requête
+    if 'places' not in request.form or not request.form['places']:
+        flash("Veuillez indiquer un nombre de places.")
+        return render_template('welcome.html', club=club, competitions=competitions)
+        
     placesRequired = int(request.form['places'])
-    competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
+    
+    # Traitement existant (Sera optimisé lors des prochaines étapes)
+    competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
     flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
 
