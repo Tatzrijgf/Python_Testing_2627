@@ -1,35 +1,45 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Points Public Board | GUDLFT</title>
-    <style>
-        table { width: 50%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
-        th { background-color: #f2f2f2; }
-    </style>
+    <title>Classement Public | GUDLFT</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
 </head>
-<body>
-    <h1>Tableau public des points des clubs</h1>
-    <p>Cette page est accessible publiquement en lecture seule aux fins de transparence.</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Nom du Club</th>
-                <th>Points Disponibles</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for club in clubs %}
-            <tr>
-                <td><strong>{{ club['name'] }}</strong></td>
-                <td>{{ club['points'] }} pts</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <p style="margin-top: 30px;"><a href="{{ url_for('index') }}">Retour à l'accueil</a></p>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-dark text-white text-center py-3">
+                        <h3 class="mb-0">Tableau Public des Points</h3>
+                        <small class="text-white-50">Transparence fédérale — Consultation en lecture seule</small>
+                    </div>
+                    <div class="card-body p-4">
+                        <table class="table table-striped table-hover align-middle mt-2">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Nom de l'Association / Club</th>
+                                    <th class="text-end">Balance des Crédits</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for club in clubs %}
+                                <tr>
+                                    <td><strong>{{ club['name'] }}</strong></td>
+                                    <td class="text-end"><span class="badge bg-success px-3 py-2">{{ club['points'] }} pts</span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        
+                        <div class="text-center mt-4">
+                            <a href="{{ url_for('index') }}" class="btn btn-primary">Retour à la page de connexion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

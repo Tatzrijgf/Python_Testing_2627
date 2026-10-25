@@ -1,18 +1,42 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking for {{competition['name']}} || GUDLFT</title>
+    <title>Réservation | GUDLFT</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
 </head>
-<body>
-    <h2>{{competition['name']}}</h2>
-    Places available: {{competition['numberOfPlaces']}}
-    <form action="/purchasePlaces" method="post">
-        <input type="hidden" name="club" value="{{club['name']}}">
-        <input type="hidden" name="competition" value="{{competition['name']}}">
-        <label for="places">How many places?</label>
-        <input type="number" name="places" min="1" required id="places"/>
-        <button type="submit">Book</button>
-    </form>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Réservation de places</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-dark">{{ competition['name'] }}</h5>
+                        <p class="text-muted">Places physiques encore disponibles : <span class="badge bg-info text-dark">{{ competition['numberOfPlaces'] }}</span></p>
+                        
+                        <form action="/purchasePlaces" method="post" class="mt-4">
+                            <input type="hidden" name="club" value="{{ club['name'] }}">
+                            <input type="hidden" name="competition" value="{{ competition['name'] }}">
+                            
+                            <div class="mb-3">
+                                <label for="places" class="form-label">Combien de places souhaitez-vous réserver ?</label>
+                                <input type="number" name="places" min="1" max="12" class="form-control" id="places" required placeholder="Ex: 2">
+                                <div class="form-text">Rappel d'équité : Limite stricte de 12 places par club et par événement.</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" onclick="window.history.back();" class="btn btn-outline-secondary">Annuler</button>
+                                <button type="submit" class="btn btn-success">Confirmer la réservation</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

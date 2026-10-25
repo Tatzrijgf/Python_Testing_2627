@@ -1,28 +1,43 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUDLFT Registration</title>
+    <title>Connexion | GUDLFT</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
 </head>
-<body>
-    <!-- Lien public vers la Phase 2 -->
-    <p style="text-align: right;"><a href="{{ url_for('points_display') }}">Consulter le classement public des points</a></p>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">GÜDLFT Portal</h4>
+                        <a href="{{ url_for('points_display') }}" class="btn btn-sm btn-outline-light">Classement Public</a>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-muted">Veuillez saisir votre adresse e-mail de secrétaire pour continuer :</p>
+                        
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                          {% if messages %}
+                            {% for category, message in messages %}
+                              <div class="alert alert-danger" role="alert">{{ message }}</div>
+                            {% endfor %}
+                          {% endif %}
+                        {% endwith %}
 
-    <h1>Welcome to the GUDLFT Registration Portal!</h1>
-    Please enter your secretary email to continue:
-    
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-danger">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-
-    <form action="showSummary" method="post">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id=""/>
-        <button type="submit">Enter</button>
-    </form>
+                        <form action="/showSummary" method="post" class="mt-3">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Adresse E-mail :</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="nom@club.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Entrer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

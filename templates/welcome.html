@@ -1,43 +1,85 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary | GUDLFT Registration</title>
+    <title>Tableau de bord | GUDLFT</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
 </head>
-<body>
-    <h2>Welcome, {{club['email']}} </h2><a href="{{url_for('logout')}}">Logout</a>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">GÜDLFT - Secrétariat</span>
+            <div class="d-flex align-items-center">
+                <span class="text-white me-3">Bienvenue, <strong>{{ club['email'] }}</strong></span>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm btn-danger">Déconnexion</a>
+            </div>
+        </div>
+    </nav>
 
-    {% with messages = get_flashed_messages()%}
-    {% if messages %}
-        <ul>
-       {% for message in messages %}
-            <li>{{message}}</li>
-        {% endfor %}
-       </ul>
-    {% endif%}
-    Points available: {{club['points']}}
-    <h3>Competitions:</h3>
-    <ul>
-        {% for comp in competitions%}
-        <li>
-            {{comp['name']}}<br />
-            Date: {{comp['date']}}</br>
-            Number of Places: {{comp['numberOfPlaces']}}
-            
-            <br />
-            {# --- CORRECTION ICI : ON VÉRIFIE LES PLACES ET LA DATE --- #}
-            {% if comp['numberOfPlaces']|int > 0 and comp['date'] > today %}
-                <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
-            {% elif comp['date'] <= today %}
-                <span style="color: gray;">(Compétition terminée)</span>
-            {% else %}
-                <span style="color: red;">(Plus de places disponibles)</span>
-            {% endif %}
-        </li>
-        <hr />
-        {% endfor %}
-    </ul>
-    {%endwith%}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 
+        <div class="row">
+            <!-- Colonne Solde de Points -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-white bg-success shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Points Disponibles</h5>
+                        <p class="display-4 font-weight-bold mb-0">{{ club['points'] }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne Compétitions -->
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Compétitions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Date</th>
+                                        <th>Places Restantes</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for comp in competitions %}
+                                    <tr>
+                                        <td><strong>{{ comp['name'] }}</strong></td>
+                                        <td><small class="text-muted">{{ comp['date'] }}</small></td>
+                                        <td><span class="badge bg-secondary">{{ comp['numberOfPlaces'] }}</span></td>
+                                        <td>
+                                            {% if comp['numberOfPlaces']|int > 0 and comp['date'] > today %}
+                                                <a href="{{ url_for('book', competition=comp['name'], club=club['name']) }}" class="btn btn-sm btn-primary">Réserver</a>
+                                            {% elif comp['date'] <= today %}
+                                                <span class="text-muted small">Terminée</span>
+                                            {% else %}
+                                                <span class="text-danger small">Complet</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
