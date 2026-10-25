@@ -5,7 +5,7 @@
     <title>Summary | GUDLFT Registration</title>
 </head>
 <body>
-        <h2>Welcome, {{club['email']}} </h2><a href="{{url_for('logout')}}">Logout</a>
+    <h2>Welcome, {{club['email']}} </h2><a href="{{url_for('logout')}}">Logout</a>
 
     {% with messages = get_flashed_messages()%}
     {% if messages %}
@@ -23,9 +23,16 @@
             {{comp['name']}}<br />
             Date: {{comp['date']}}</br>
             Number of Places: {{comp['numberOfPlaces']}}
-            {%if comp['numberOfPlaces']|int >0%}
-            <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
-            {%endif%}
+            
+            <br />
+            {# --- CORRECTION ICI : ON VÉRIFIE LES PLACES ET LA DATE --- #}
+            {% if comp['numberOfPlaces']|int > 0 and comp['date'] > today %}
+                <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
+            {% elif comp['date'] <= today %}
+                <span style="color: gray;">(Compétition terminée)</span>
+            {% else %}
+                <span style="color: red;">(Plus de places disponibles)</span>
+            {% endif %}
         </li>
         <hr />
         {% endfor %}

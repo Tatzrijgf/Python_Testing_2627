@@ -1,5 +1,6 @@
 import pkgutil
 import json
+from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash, url_for
 
 
@@ -40,7 +41,7 @@ def showSummary():
         
     # 3. Si un club existe, on prend le premier de la liste en toute sécurité
     club = matching_clubs[0]
-    return render_template('welcome.html', club=club, competitions=competitions)
+    return render_template('welcome.html', club=club, competitions=competitions, today=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 
 @app.route('/book/<competition>/<club>')
@@ -75,6 +76,14 @@ def purchasePlaces():
     club = matching_clubs[0]
     
     placesRequired = int(request.form['places'])
+    return render_template('welcome.html', club=club, competitions=competitions, today=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
+
+    # --- CORRECTION ÉTAPE 5 : Interdire la réservation sur une date passée ---
+    competition_date = datetime.strptime(competition['date'], '%Y-%m-%d %H:%M:%S')
+    if competition_date < datetime.now():
+        flash("Erreur : Impossible de réserver des places pour une compétition passée.")
+        return render_template('welcome.html', club=club, competitions=competitions)
 
     # Récupérer l'historique des places déjà réservées par ce club pour cette compétition
     already_booked = booking_history[club['name']].get(competition['name'], 0)
@@ -88,11 +97,9 @@ def purchasePlaces():
         flash("Erreur : Vous n'avez pas assez de points pour réserver ce nombre de places.")
         return render_template('welcome.html', club=club, competitions=competitions)
     
-    # Application des changements et mise à jour de l'historique
+    # Application des changements
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
     club['points'] = str(int(club['points']) - placesRequired)
-    
-    # Sauvegarde dans l'historique de suivi
     booking_history[club['name']][competition['name']] = already_booked + placesRequired
     
     flash('Great-booking complete!')
