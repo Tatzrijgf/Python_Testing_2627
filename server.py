@@ -76,7 +76,10 @@ def purchasePlaces():
     club = matching_clubs[0]
     
     placesRequired = int(request.form['places'])
-    return render_template('welcome.html', club=club, competitions=competitions, today=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    
+    if placesRequired > int(competition['numberOfPlaces']):
+        flash(f"Erreur : Il ne reste que {competition['numberOfPlaces']} places disponibles pour cette compétition.")
+        return render_template('welcome.html', club=club, competitions=competitions, today=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 
     # --- CORRECTION ÉTAPE 5 : Interdire la réservation sur une date passée ---
