@@ -78,11 +78,15 @@ def purchasePlaces():
         return render_template('welcome.html', club=club, competitions=competitions)
         
     placesRequired = int(request.form['places'])
-    
-    # Traitement existant (Sera optimisé lors des prochaines étapes)
+
+    # Mise à jour des places de la compétition
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
+    # Mise à jour des points du club (1 point par place)
+    club['points'] = str(int(club['points']) - placesRequired)
+    
     flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
+
 
 
 # TODO: Add route for points display
