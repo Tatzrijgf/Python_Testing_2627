@@ -10,8 +10,8 @@
     <form action="/purchasePlaces" method="post">
         <input type="hidden" name="club" value="{{club['name']}}">
         <input type="hidden" name="competition" value="{{competition['name']}}">
-        <label for="places">How many places?</label><input type="number" name="places" id=""/>
-        <input type="number" name="places" min="1" id=""/>
+        <label for="places">How many places?</label>
+        <input type="number" name="places" min="1" required id="places"/>
         <button type="submit">Book</button>
     </form>
 </body>

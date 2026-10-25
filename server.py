@@ -64,7 +64,6 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
-    # Recherche sécurisée de la compétition et du club depuis le formulaire
     matching_competitions = [c for c in competitions if c['name'] == request.form['competition']]
     matching_clubs = [c for c in clubs if c['name'] == request.form['club']]
     
@@ -75,35 +74,33 @@ def purchasePlaces():
     competition = matching_competitions[0]
     club = matching_clubs[0]
     
+    # Génération systématique de la date pour le rendu des erreurs
+    current_date_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
     placesRequired = int(request.form['places'])
 
-    # --- CORRECTION ÉTAPE 7 : Interdire les valeurs négatives ou nulles ---
     if placesRequired <= 0:
         flash("Erreur : Le nombre de places demandées doit être supérieur à zéro.")
-        return render_template('welcome.html', club=club, competitions=competitions, today=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        return render_template('welcome.html', club=club, competitions=competitions, today=current_date_str)
     
     if placesRequired > int(competition['numberOfPlaces']):
-        flash(f"Erreur : Il ne reste que {competition['numberOfPlaces']} places disponibles pour cette compétition.")
-        return render_template('welcome.html', club=club, competitions=competitions, today=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        flash(f"Erreur : Il ne reste que {competition['numberOfPlaces']} places disponibles.")
+        return render_template('welcome.html', club=club, competitions=competitions, today=current_date_str)
 
-
-    # --- CORRECTION ÉTAPE 5 : Interdire la réservation sur une date passée ---
     competition_date = datetime.strptime(competition['date'], '%Y-%m-%d %H:%M:%S')
     if competition_date < datetime.now():
         flash("Erreur : Impossible de réserver des places pour une compétition passée.")
-        return render_template('welcome.html', club=club, competitions=competitions)
+        return render_template('welcome.html', club=club, competitions=competitions, today=current_date_str)
 
-    # Récupérer l'historique des places déjà réservées par ce club pour cette compétition
     already_booked = booking_history[club['name']].get(competition['name'], 0)
 
-    # Vérification de la limite de 12 places
     if already_booked + placesRequired > 12:
-        flash(f"Erreur : Vous ne pouvez pas réserver plus de 12 places au total pour cette compétition. Vous en avez déjà réservé {already_booked}.")
-        return render_template('welcome.html', club=club, competitions=competitions)
+        flash(f"Erreur : Vous ne pouvez pas réserver plus de 12 places au total. Déjà réservé : {already_booked}.")
+        return render_template('welcome.html', club=club, competitions=competitions, today=current_date_str)
 
     if placesRequired > int(club['points']):
         flash("Erreur : Vous n'avez pas assez de points pour réserver ce nombre de places.")
-        return render_template('welcome.html', club=club, competitions=competitions)
+        return render_template('welcome.html', club=club, competitions=competitions, today=current_date_str)
     
     # Application des changements
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
@@ -111,7 +108,7 @@ def purchasePlaces():
     booking_history[club['name']][competition['name']] = already_booked + placesRequired
     
     flash('Great-booking complete!')
-    return render_template('welcome.html', club=club, competitions=competitions)
+    return render_template('welcome.html', club=club, competitions=competitions, today=current_date_str)
 
 
 # TODO: Add route for points display
