@@ -112,6 +112,11 @@ def purchasePlaces():
 
 
 # TODO: Add route for points display
+@app.route('/points')
+def points_display():
+    # Tri optionnel des clubs par ordre alphabétique pour une meilleure lisibilité
+    ordered_clubs = sorted(clubs, key=lambda x: x['name'])
+    return render_template('points.html', clubs=ordered_clubs)
 
 
 @app.route('/logout')

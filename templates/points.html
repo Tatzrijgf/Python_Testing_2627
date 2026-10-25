@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points Public Board | GUDLFT</title>
+    <style>
+        table { width: 50%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Tableau public des points des clubs</h1>
+    <p>Cette page est accessible publiquement en lecture seule aux fins de transparence.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Club</th>
+                <th>Points Disponibles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for club in clubs %}
+            <tr>
+                <td><strong>{{ club['name'] }}</strong></td>
+                <td>{{ club['points'] }} pts</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="margin-top: 30px;"><a href="{{ url_for('index') }}">Retour à l'accueil</a></p>
+</body>
+</html>
