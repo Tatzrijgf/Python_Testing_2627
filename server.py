@@ -21,6 +21,8 @@ app.secret_key = 'something_special'
 competitions = loadCompetitions()
 clubs = loadClubs()
 
+booking_history = {club['name']: {} for club in clubs}
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -73,14 +75,25 @@ def purchasePlaces():
     club = matching_clubs[0]
     
     placesRequired = int(request.form['places'])
-    
+
+    # Récupérer l'historique des places déjà réservées par ce club pour cette compétition
+    already_booked = booking_history[club['name']].get(competition['name'], 0)
+
+    # Vérification de la limite de 12 places
+    if already_booked + placesRequired > 12:
+        flash(f"Erreur : Vous ne pouvez pas réserver plus de 12 places au total pour cette compétition. Vous en avez déjà réservé {already_booked}.")
+        return render_template('welcome.html', club=club, competitions=competitions)
+
     if placesRequired > int(club['points']):
         flash("Erreur : Vous n'avez pas assez de points pour réserver ce nombre de places.")
         return render_template('welcome.html', club=club, competitions=competitions)
     
-    # Application des changements si la vérification passe
+    # Application des changements et mise à jour de l'historique
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
     club['points'] = str(int(club['points']) - placesRequired)
+    
+    # Sauvegarde dans l'historique de suivi
+    booking_history[club['name']][competition['name']] = already_booked + placesRequired
     
     flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
