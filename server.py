@@ -72,21 +72,18 @@ def purchasePlaces():
     competition = matching_competitions[0]
     club = matching_clubs[0]
     
-    # Sécurisation minimale en cas d'absence du champ 'places' dans la requête
-    if 'places' not in request.form or not request.form['places']:
-        flash("Veuillez indiquer un nombre de places.")
-        return render_template('welcome.html', club=club, competitions=competitions)
-        
     placesRequired = int(request.form['places'])
-
-    # Mise à jour des places de la compétition
+    
+    if placesRequired > int(club['points']):
+        flash("Erreur : Vous n'avez pas assez de points pour réserver ce nombre de places.")
+        return render_template('welcome.html', club=club, competitions=competitions)
+    
+    # Application des changements si la vérification passe
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
-    # Mise à jour des points du club (1 point par place)
     club['points'] = str(int(club['points']) - placesRequired)
     
     flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
-
 
 
 # TODO: Add route for points display
