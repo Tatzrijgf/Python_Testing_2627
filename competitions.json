@@ -9,6 +9,11 @@
             "name": "Fall Classic",
             "date": "2020-10-22 13:30:00",
             "numberOfPlaces": "13"
+        },
+        {
+            "name": "GUDLFT Super Cup 2027",
+            "date": "2027-12-25 10:00:00",
+            "numberOfPlaces": "20"
         }
     ]
 }
