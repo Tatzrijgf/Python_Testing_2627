@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>tests\integration\test_server_integration.py - flake8 annotated source</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <h1>
+            <a href="tests.integration.test_server_integration.report.html">
+               <img src="back.svg" alt="&#x2B05;">
+               tests\integration\test_server_integration.py source
+            </a>
+         </h1>
+
+         <div id="doc">
+            <div id="l1"
+               class="code sev- "><tt><i>1</i> <span class="k">def</span><span class="w"> </span><span class="nf">test_login_sad_path_unknown_email</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+            </div>
+            <div id="l2"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (92 > 79 characters)</li>
+               
+               </ul><tt><i>2</i> <span class="w">    </span><span class="sd">"""Vérifie qu'un email inconnu est rejeté et redirigé proprement (Correctif Phase 1)."""</span></tt>
+            </div>
+            <div id="l3"
+               class="code sev- "><tt><i>3</i>     <span class="c1"># Flask stocke les messages flash dans la session de test.</span></tt>
+            </div>
+            <div id="l4"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (93 > 79 characters)</li>
+               
+               </ul><tt><i>4</i>     <span class="c1"># Pour un test robuste et indépendant du design HTML, on inspecte directement la session.</span></tt>
+            </div>
+            <div id="l5"
+               class="code sev- "><tt><i>5</i>     <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">session_transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span></tt>
+            </div>
+            <div id="l6"
+               class="code sev- "><tt><i>6</i>         <span class="c1"># On nettoie les anciens messages s'il y en a</span></tt>
+            </div>
+            <div id="l7"
+               class="code sev- "><tt><i>7</i>         <span class="k">if</span> <span class="s1">'_flashes'</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span></tt>
+            </div>
+            <div id="l8"
+               class="code sev- "><tt><i>8</i>             <span class="n">session</span><span class="p">[</span><span class="s1">'_flashes'</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></tt>
+            </div>
+            <div id="l9"
+               class="code sev- "><tt><i>9</i> &nbsp;</tt>
+            </div>
+            <div id="l10"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (102 > 79 characters)</li>
+               
+               </ul><tt><i>10</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'/showSummary'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">'email'</span><span class="p">:</span> <span class="s1">'ghost@unknown.com'</span><span class="p">},</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+            </div>
+            <div id="l11"
+               class="code sev- "><tt><i>11</i>     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
+            </div>
+            <div id="l12"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        W293
+                     </span>
+                     Blank line contains whitespace</li>
+               
+               </ul><tt><i>12</i>     </tt>
+            </div>
+            <div id="l13"
+               class="code sev- "><tt><i>13</i>     <span class="c1"># Vérification universelle : on cherche le texte brut dans la page générée</span></tt>
+            </div>
+            <div id="l14"
+               class="code sev- "><tt><i>14</i>     <span class="n">html_content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span></tt>
+            </div>
+            <div id="l15"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (92 > 79 characters)</li>
+               
+               </ul><tt><i>15</i>     <span class="k">assert</span> <span class="s2">"Cette adresse e-mail n'est pas"</span> <span class="ow">in</span> <span class="n">html_content</span> <span class="ow">or</span> <span class="s2">"enregistrée"</span> <span class="ow">in</span> <span class="n">html_content</span></tt>
+            </div>
+            <div id="l16"
+               class="code sev- "><tt><i>16</i> &nbsp;</tt>
+            </div>
+            <div id="l17"
+               class="code sev- "><tt><i>17</i> &nbsp;</tt>
+            </div>
+            <div id="l18"
+               class="code sev- "><tt><i>18</i> <span class="k">def</span><span class="w"> </span><span class="nf">test_purchase_places_sad_path_past_competition</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+            </div>
+            <div id="l19"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (91 > 79 characters)</li>
+               
+               </ul><tt><i>19</i> <span class="w">    </span><span class="sd">"""Vérifie le blocage d'une réservation sur un événement périmé (Correctif Étape 5)."""</span></tt>
+            </div>
+            <div id="l20"
+               class="code sev- "><tt><i>20</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'/purchasePlaces'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span></tt>
+            </div>
+            <div id="l21"
+               class="code sev- "><tt><i>21</i>         <span class="s1">'club'</span><span class="p">:</span> <span class="s1">'Simply Lift'</span><span class="p">,</span></tt>
+            </div>
+            <div id="l22"
+               class="code sev- "><tt><i>22</i>         <span class="s1">'competition'</span><span class="p">:</span> <span class="s1">'Spring Festival'</span><span class="p">,</span></tt>
+            </div>
+            <div id="l23"
+               class="code sev- "><tt><i>23</i>         <span class="s1">'places'</span><span class="p">:</span> <span class="s1">'2'</span></tt>
+            </div>
+            <div id="l24"
+               class="code sev- "><tt><i>24</i>     <span class="p">},</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+            </div>
+            <div id="l25"
+               class="code sev- "><tt><i>25</i>     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
+            </div>
+            <div id="l26"
+               class="code sev- "><tt><i>26</i>     <span class="n">html_content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span></tt>
+            </div>
+            <div id="l27"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (91 > 79 characters)</li>
+               
+               </ul><tt><i>27</i>     <span class="k">assert</span> <span class="s2">"Impossible de réserver des places pour une compétition passée."</span> <span class="ow">in</span> <span class="n">html_content</span></tt>
+            </div>
+            
+         </div>
+      </div>
+   </body>
+</html>

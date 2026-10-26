@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: server.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="server.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               server.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F401:</strong> 'pkgutil' imported but unused
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="server.source.html#l1">
+                  <tt><i>1</i> <span class="kn">import</span><span class="w"> </span><span class="nn">pkgutil</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  21
+               </span>
+               <strong>E501:</strong> line too long (87 > 79 characters)
+               
+                  (and 11 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="server.source.html#l35">
+                  <tt><i>35</i>     <span class="n">matching_clubs</span> <span class="o">=</span> <span class="p">[</span><span class="n">club</span> <span class="k">for</span> <span class="n">club</span> <span class="ow">in</span> <span class="n">clubs</span> <span class="k">if</span> <span class="n">club</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="server.source.html#l37">
+                  <tt><i>37</i>     <span class="c1"># 2. Si aucun club n'est trouvé, on affiche un message et on redirige vers l'accueil</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (132 > 79 characters):</p>
+               
+               <a href="server.source.html#l44">
+                  <tt><i>44</i>     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="server.source.html#l52">
+                  <tt><i>52</i>     <span class="n">matching_competitions</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">competitions</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">competition</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="server.source.html#l62">
+                  <tt><i>62</i>     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'booking.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">foundClub</span><span class="p">,</span> <span class="n">competition</span><span class="o">=</span><span class="n">foundCompetition</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="server.source.html#l67">
+                  <tt><i>67</i>     <span class="n">matching_competitions</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">competitions</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">'competition'</span><span class="p">]]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="server.source.html#l83">
+                  <tt><i>83</i>         <span class="n">flash</span><span class="p">(</span><span class="s2">"Erreur : Le nombre de places demandées doit être supérieur à zéro."</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="server.source.html#l84">
+                  <tt><i>84</i>         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">current_date_str</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="server.source.html#l87">
+                  <tt><i>87</i>         <span class="n">flash</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Erreur : Il ne reste que </span><span class="si">{</span><span class="n">competition</span><span class="p">[</span><span class="s1">'numberOfPlaces'</span><span class="p">]</span><span class="si">}</span><span class="s2"> places disponibles."</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="server.source.html#l88">
+                  <tt><i>88</i>         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">current_date_str</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="server.source.html#l90">
+                  <tt><i>90</i>     <span class="n">competition_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">competition</span><span class="p">[</span><span class="s1">'date'</span><span class="p">],</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="server.source.html#l92">
+                  <tt><i>92</i>         <span class="n">flash</span><span class="p">(</span><span class="s2">"Erreur : Impossible de réserver des places pour une compétition passée."</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="server.source.html#l93">
+                  <tt><i>93</i>         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">current_date_str</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (115 > 79 characters):</p>
+               
+               <a href="server.source.html#l98">
+                  <tt><i>98</i>         <span class="n">flash</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Erreur : Vous ne pouvez pas réserver plus de 12 places au total. Déjà réservé : </span><span class="si">{</span><span class="n">already_booked</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="server.source.html#l99">
+                  <tt><i>99</i>         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">current_date_str</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="server.source.html#l102">
+                  <tt><i>102</i>         <span class="n">flash</span><span class="p">(</span><span class="s2">"Erreur : Vous n'avez pas assez de points pour réserver ce nombre de places."</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="server.source.html#l103">
+                  <tt><i>103</i>         <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">current_date_str</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="server.source.html#l106">
+                  <tt><i>106</i>     <span class="n">competition</span><span class="p">[</span><span class="s1">'numberOfPlaces'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">competition</span><span class="p">[</span><span class="s1">'numberOfPlaces'</span><span class="p">])</span> <span class="o">-</span> <span class="n">placesRequired</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="server.source.html#l108">
+                  <tt><i>108</i>     <span class="n">booking_history</span><span class="p">[</span><span class="n">club</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]][</span><span class="n">competition</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">already_booked</span> <span class="o">+</span> <span class="n">placesRequired</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (104 > 79 characters):</p>
+               
+               <a href="server.source.html#l111">
+                  <tt><i>111</i>     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'welcome.html'</span><span class="p">,</span> <span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">,</span> <span class="n">competitions</span><span class="o">=</span><span class="n">competitions</span><span class="p">,</span> <span class="n">today</span><span class="o">=</span><span class="n">current_date_str</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="server.source.html#l117">
+                  <tt><i>117</i>     <span class="c1"># Tri optionnel des clubs par ordre alphabétique pour une meilleure lisibilité</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W293">
+               <span class="count sev-2">
+                  12
+               </span>
+               <strong>W293:</strong> blank line contains whitespace
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="server.source.html#l36">
+                  <tt><i>36</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l41">
+                  <tt><i>41</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l53">
+                  <tt><i>53</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l58">
+                  <tt><i>58</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l61">
+                  <tt><i>61</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l69">
+                  <tt><i>69</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l73">
+                  <tt><i>73</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l76">
+                  <tt><i>76</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l79">
+                  <tt><i>79</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l85">
+                  <tt><i>85</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l104">
+                  <tt><i>104</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l109">
+                  <tt><i>109</i>     </tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E111">
+               <span class="count sev-2">
+                  4
+               </span>
+               <strong>E111:</strong> indentation is not a multiple of 4
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="server.source.html#l9">
+                  <tt><i>9</i>          <span class="n">listOfClubs</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">c</span><span class="p">)[</span><span class="s1">'clubs'</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l10">
+                  <tt><i>10</i>          <span class="k">return</span> <span class="n">listOfClubs</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l15">
+                  <tt><i>15</i>          <span class="n">listOfCompetitions</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">comps</span><span class="p">)[</span><span class="s1">'competitions'</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l16">
+                  <tt><i>16</i>          <span class="k">return</span> <span class="n">listOfCompetitions</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E117">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E117:</strong> over-indented
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="server.source.html#l9">
+                  <tt><i>9</i>          <span class="n">listOfClubs</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">c</span><span class="p">)[</span><span class="s1">'clubs'</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="server.source.html#l15">
+                  <tt><i>15</i>          <span class="n">listOfCompetitions</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">comps</span><span class="p">)[</span><span class="s1">'competitions'</span><span class="p">]</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E302">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E302:</strong> expected 2 blank lines, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="server.source.html#l27">
+                  <tt><i>27</i> <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>
