@@ -1,0 +1,62 @@
+[1m.\locustfile.py[m[36m:[m3[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\locustfile.py[m[36m:[m4[36m:[m80[36m:[m [1m[31mE501[m line too long (83 > 79 characters)
+[1m.\server.py[m[36m:[m1[36m:[m1[36m:[m [1m[31mF401[m 'pkgutil' imported but unused
+[1m.\server.py[m[36m:[m9[36m:[m10[36m:[m [1m[31mE111[m indentation is not a multiple of 4
+[1m.\server.py[m[36m:[m9[36m:[m10[36m:[m [1m[31mE117[m over-indented
+[1m.\server.py[m[36m:[m10[36m:[m10[36m:[m [1m[31mE111[m indentation is not a multiple of 4
+[1m.\server.py[m[36m:[m15[36m:[m10[36m:[m [1m[31mE111[m indentation is not a multiple of 4
+[1m.\server.py[m[36m:[m15[36m:[m10[36m:[m [1m[31mE117[m over-indented
+[1m.\server.py[m[36m:[m16[36m:[m10[36m:[m [1m[31mE111[m indentation is not a multiple of 4
+[1m.\server.py[m[36m:[m27[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\server.py[m[36m:[m35[36m:[m80[36m:[m [1m[31mE501[m line too long (87 > 79 characters)
+[1m.\server.py[m[36m:[m36[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m37[36m:[m80[36m:[m [1m[31mE501[m line too long (88 > 79 characters)
+[1m.\server.py[m[36m:[m41[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m44[36m:[m80[36m:[m [1m[31mE501[m line too long (132 > 79 characters)
+[1m.\server.py[m[36m:[m52[36m:[m80[36m:[m [1m[31mE501[m line too long (81 > 79 characters)
+[1m.\server.py[m[36m:[m53[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m58[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m61[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m62[36m:[m80[36m:[m [1m[31mE501[m line too long (88 > 79 characters)
+[1m.\server.py[m[36m:[m67[36m:[m80[36m:[m [1m[31mE501[m line too long (97 > 79 characters)
+[1m.\server.py[m[36m:[m69[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m73[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m76[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m79[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m83[36m:[m80[36m:[m [1m[31mE501[m line too long (83 > 79 characters)
+[1m.\server.py[m[36m:[m84[36m:[m80[36m:[m [1m[31mE501[m line too long (108 > 79 characters)
+[1m.\server.py[m[36m:[m85[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m87[36m:[m80[36m:[m [1m[31mE501[m line too long (94 > 79 characters)
+[1m.\server.py[m[36m:[m88[36m:[m80[36m:[m [1m[31mE501[m line too long (108 > 79 characters)
+[1m.\server.py[m[36m:[m90[36m:[m80[36m:[m [1m[31mE501[m line too long (82 > 79 characters)
+[1m.\server.py[m[36m:[m92[36m:[m80[36m:[m [1m[31mE501[m line too long (88 > 79 characters)
+[1m.\server.py[m[36m:[m93[36m:[m80[36m:[m [1m[31mE501[m line too long (108 > 79 characters)
+[1m.\server.py[m[36m:[m98[36m:[m80[36m:[m [1m[31mE501[m line too long (115 > 79 characters)
+[1m.\server.py[m[36m:[m99[36m:[m80[36m:[m [1m[31mE501[m line too long (108 > 79 characters)
+[1m.\server.py[m[36m:[m102[36m:[m80[36m:[m [1m[31mE501[m line too long (92 > 79 characters)
+[1m.\server.py[m[36m:[m103[36m:[m80[36m:[m [1m[31mE501[m line too long (108 > 79 characters)
+[1m.\server.py[m[36m:[m104[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m106[36m:[m80[36m:[m [1m[31mE501[m line too long (87 > 79 characters)
+[1m.\server.py[m[36m:[m108[36m:[m80[36m:[m [1m[31mE501[m line too long (88 > 79 characters)
+[1m.\server.py[m[36m:[m109[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\server.py[m[36m:[m111[36m:[m80[36m:[m [1m[31mE501[m line too long (104 > 79 characters)
+[1m.\server.py[m[36m:[m117[36m:[m80[36m:[m [1m[31mE501[m line too long (82 > 79 characters)
+[1m.\tests\conftest.py[m[36m:[m4[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\tests\conftest.py[m[36m:[m13[36m:[m80[36m:[m [1m[31mE501[m line too long (91 > 79 characters)
+[1m.\tests\conftest.py[m[36m:[m14[36m:[m80[36m:[m [1m[31mE501[m line too long (85 > 79 characters)
+[1m.\tests\conftest.py[m[36m:[m17[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\tests\integration\test_server_integration.py[m[36m:[m2[36m:[m80[36m:[m [1m[31mE501[m line too long (92 > 79 characters)
+[1m.\tests\integration\test_server_integration.py[m[36m:[m4[36m:[m80[36m:[m [1m[31mE501[m line too long (93 > 79 characters)
+[1m.\tests\integration\test_server_integration.py[m[36m:[m10[36m:[m80[36m:[m [1m[31mE501[m line too long (102 > 79 characters)
+[1m.\tests\integration\test_server_integration.py[m[36m:[m12[36m:[m1[36m:[m [1m[31mW293[m blank line contains whitespace
+[1m.\tests\integration\test_server_integration.py[m[36m:[m15[36m:[m80[36m:[m [1m[31mE501[m line too long (92 > 79 characters)
+[1m.\tests\integration\test_server_integration.py[m[36m:[m19[36m:[m80[36m:[m [1m[31mE501[m line too long (91 > 79 characters)
+[1m.\tests\integration\test_server_integration.py[m[36m:[m27[36m:[m80[36m:[m [1m[31mE501[m line too long (91 > 79 characters)
+[1m.\tests\unit\test_server_units.py[m[36m:[m3[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\tests\unit\test_server_units.py[m[36m:[m4[36m:[m80[36m:[m [1m[31mE501[m line too long (81 > 79 characters)
+[1m.\tests\unit\test_server_units.py[m[36m:[m9[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\tests\unit\test_server_units.py[m[36m:[m10[36m:[m80[36m:[m [1m[31mE501[m line too long (88 > 79 characters)
+[1m.\tests\unit\test_server_units.py[m[36m:[m15[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\tests\unit\test_server_units.py[m[36m:[m16[36m:[m80[36m:[m [1m[31mE501[m line too long (97 > 79 characters)
+[1m.\tests\unit\test_server_units.py[m[36m:[m19[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1m.\tests\unit\test_server_units.py[m[36m:[m20[36m:[m80[36m:[m [1m[31mE501[m line too long (84 > 79 characters)
